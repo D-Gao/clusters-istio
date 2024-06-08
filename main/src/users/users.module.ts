@@ -12,6 +12,7 @@ import { join } from 'path';
         name: 'AUTH_SERVICE',
         transport: Transport.GRPC,
         options: {
+          url: 'http://localhost:50051',
           package: protobufPackage,
           protoPath: join(__dirname, '../proto/auth.proto'),
         },

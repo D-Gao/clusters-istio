@@ -6,6 +6,7 @@ import { AppModule } from './app.module';
 export const grpcClientOptions: MicroserviceOptions = {
   transport: Transport.GRPC,
   options: {
+    url: 'http://localhost:50051',
     package: 'auth', // name of the package defined in the proto file
     protoPath: join(__dirname, './proto/auth.proto'), // path to the proto file
   },
