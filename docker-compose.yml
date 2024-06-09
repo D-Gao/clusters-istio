@@ -1,0 +1,30 @@
+version: "3.8"
+
+services:
+  app:
+    build:
+      context: ./main/
+      dockerfile: Dockerfile
+      target: prod
+    container_name: app-container
+    ports:
+      - "3000:3000"
+    networks:
+      - my-network
+    environment:
+      - GRPC_SERVER_URL=grpc-container:50051
+
+  grpc:
+    build:
+      context: ./grpc-server/
+      dockerfile: Dockerfile
+      target: prod
+    container_name: grpc-container
+    ports:
+      - "50051:50051"
+    networks:
+      - my-network
+
+networks:
+  my-network:
+    driver: bridge
