@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "grpc-chart.fullname" . }}-environment
+  labels:
+    {{- include "grpc-chart.labels" . | nindent 4 }}
+data:
+  {{- range $key, $value := .Values.environment }}
+  {{ $key }}: {{ $value | quote }}
+  {{- end }}
