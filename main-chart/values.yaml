@@ -54,6 +54,7 @@ ingress:
     # kubernetes.io/tls-acme: "true"
   hosts:
     - host: 20.56.144.33
+      omitHost: true
       paths:
         - path: /
           pathType: ImplementationSpecific
