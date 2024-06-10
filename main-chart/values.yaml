@@ -112,4 +112,6 @@ tolerations: []
 affinity: {}
 
 environment:
-  GRPC_SERVER_URL: grpc.default.svc.cluster.local:50051
+  - key: grpc-server-url
+    value: grpc.default.svc.cluster.local:50051
+    name: GRPC_SERVER_URL

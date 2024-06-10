@@ -50,10 +50,13 @@ spec:
           volumeMounts:
             {{- toYaml . | nindent 12 }}
           {{- end }}
-          envFrom:
-          {{- range $key, $value := .Values.environment }}
-            - configMapRef:
-                name: {{ $key }}
+          env:
+          {{- range .Values.environment }}
+            - name: {{ .name }}
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "main-chart.fullname" $ }}-environment       
+                  key: {{ .key }}
           {{- end }}
       {{- with .Values.volumes }}
       volumes:
